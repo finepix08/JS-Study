@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+<script>
+
+
+
+/*var adding = (function() {
+	var counter = 0;
+	return function(n) {
+		return counter+=n;
+	}
+}());
+
+console.log(adding(3));
+console.log(adding(6));
+console.log(adding(12));*/
+
+/*function SecFromDays(n) {
+	return n*86400;
+}
+
+console.log(SecFromDays(5));*/
+
+
+/*function Fibonacci(N){
+	var array = [1,1];
+	var summArr = 0;
+	while (summArr < N) {
+		var summArr = array[array.length-1] + array[array.length-2];
+		array.push(summArr);
+	}
+	array.pop();
+	return array
+}
+console.log(Fibonacci(57));*/
+
+
+
+/*var array = ['hello', 'how', 'are', 'you'];
+function getMass(array){
+	console.log(array);
+	var array2 = array.map(function(e){return e});
+	array2.sort();
+	for (i = 0; i < array2.length/2; i++) {
+		array2.shift();
+	}
+	var string2 = array2.join(' ');
+	console.log(string2);
+	var string = array.join('');
+	console.log(string2.length/string.length);
+}
+
+getMass(array);*/
+
+
+
+/*var string = "голод чем меч долог";
+function checkPalindrom(string){
+	var array = string.split('');
+	console.log(array);
+	while (array.indexOf(" ") != -1) {
+		array.splice(array.indexOf(" "),1)
+	}
+	console.log(array);
+	for (i = 0; i < array.length; i++) {
+		if (array[i] !== array[array.length-1-i]) {
+			console.log("Не является палиндромом!");
+			break;
+		} else if (i == array.length-1) {
+			console.log("Палиндром!");
+		}
+	}
+}
+
+checkPalindrom(string);*/
+
+
+/*var car = {
+	speed: 100,
+	type: 'sedan',
+	name: 'audi',
+	color: 'red',
+	Increase: function() {
+		return this.speed+=20;
+	},
+	ChangeColor: function(){
+		return this.color = 'red';
+	}
+}
+
+var car1 = Object.create(car);
+car1.weight = "1500kg";
+
+var car2 = Object.create(car1);
+car2.length = "4m";
+car2.height = "1.8m";
+
+
+
+function NumberOfAllProperties(Obj){
+	var i = 0;
+	for (var prop in Obj) {
+		if (Obj.hasOwnProperty(prop)) {
+			i++;
+		}
+	}
+	return i;
+}
+
+function NumberOfProtoProperties(Obj){
+	var i = 0;
+	for (var prop in Obj) {
+		i++;
+	}
+	return i;
+}
+
+console.log(NumberOfProperties(car2));
+console.log(NumberOfAllProperties(car2));*/
+
+
+/*var matrix = {
+	width: 3,
+	height: 3,
+	elements: 
+	[[1, 2, 3],
+   [4, 5, 6],
+   [7, 8, 9]],
+	sum: function() {
+		var summ = 0;
+		for (i = 0; i < this.width; i++) {
+			for (j = 0; j < this.height; j++) {
+				summ += this.elements[i][j];
+			}
+		}
+	return summ;
+	},
+	print: function() {
+		for (i = 0; i < this.width; i++) {
+		 console.log (this.elements[i].join(' '));
+		}
+	}
+}
+
+*/
+
+
+/*var anymatrix = function (matrix){
+	this.width = matrix[0].length;
+	this.height = matrix.length;
+	this.elements = matrix; 
+	this.sum = function() {
+		var self = this;
+		var summ = 0;
+		for (var i = 0; i < self.width; i++) {
+			for (var j = 0; j < self.height; j++) {
+				summ += self.elements[i][j];
+			}
+		}
+	return summ;
+	};
+	this.print = function() {
+		var self = this;
+		for (var i = 0; i < self.width; i++) {
+		 console.log (self.elements[i].join(' '));
+		}
+	}
+}
+
+
+var matrix1 = new anymatrix([[1, 2, 3],[4, 5, 6],[7, 8, 9]]);
+console.log(matrix1);*/
+
+
+
+
+/*var car = function (color) {
+	this.color = color;
+	this.speed = 20;
+	this.height ='1.5m';
+}
+
+console.log(car);
+var car1 = new car('green');
+console.log(car1);*/
+
+
+
+
+
+
+/*var ChangeNotepad = (function() {
+	var Notepad = [{name: 'Superman', phone: '777-777-77'}];
+	return {
+		AddNote: function(name1, phone1) { 
+			Notepad.push({name: name1, phone: phone1});
+			return Notepad;
+			},  
+		FindTelefon: function(name1) {
+			for (var i = 0; i < Notepad.length; i++) {
+				if (Notepad[i].name === name1) {
+					return Notepad[i].phone;
+				}
+			}
+			return -1;
+		},
+		DeleteName: function(name1) {
+			var index = 0;
+			for (var i = 0; i < Notepad.length; i++) {
+				if (Notepad[i].name === name1) {
+					index = i;
+				}
+			}
+			Notepad.splice(index, 1);
+			return Notepad;
+		},
+		ChangeTelefon: function(name1) {
+			for (var i = 0; i < Notepad.length; i++) {
+				if (Notepad[i].name == name1) {
+					Notepad[i].phone = '111-111-11';
+				}
+			}
+			return Notepad;
+		}
+
+	}
+}()); 
+
+
+console.log(ChangeNotepad.AddNote("Валера", "888-888-888"));
+console.log(ChangeNotepad.AddNote("Игорь", "999-999-999"));
+console.log(ChangeNotepad.AddNote("Даша", "555-555-555"));
+
+console.log(ChangeNotepad.FindTelefon("Superman"));
+console.log(ChangeNotepad.FindTelefon("Игорь"));
+console.log(ChangeNotepad.FindTelefon("Валера"));
+console.log(ChangeNotepad.FindTelefon("Даша"));
+
+
+console.log(ChangeNotepad.ChangeTelefon("Валера"));*/
+
+
+/*var array = [5,2,7,1,4,8,5,2,3,9,3,4];
+for (var n = 0; n < array.length - 1; n++) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] > array[i+1]) {
+      var c = array[i];
+      array[i] = array[i+1];
+      array[i+1] = c;
+    }
+  }
+}
+  
+console.log(array);*/
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+<script>
+
+
+//CLASSWORK
+/*array = [1,"hello",-3,4,"world",90,12];
+console.log(array.slice(2,4));
+
+
+for(i=0;i<array.length;i++) {
+	if (typeof(array[i])!=="number")
+		array[i]=i;
+}
+console.log(array);
+
+
+var array2 = array.map(function(element,index){
+	if (typeof(element)!=="number") {
+		return element = index;
+	} else {
+		return element = element;
+	}
+});
+console.log(array2);
+
+
+var array3 = array2.map(function(element,index){
+		return element = element*index;
+});
+console.log(array3);
+
+
+
+var min = array3[0];
+var max = array3 [0];
+array3.forEach(function(element,index) {
+	if (min>element) {
+		min = element
+	} 
+	if (max<element) {
+		max = element
+	}
+});
+console.log(min,max);
+
+
+console.log(array3.indexOf(min),array3.indexOf(max));
+console.log(array3.lastIndexOf(min),array3.lastIndexOf(max));
+
+
+array3.forEach(function(element,index){
+	if(index>=array3.length-4) {
+		console.log(element);
+	}
+});
+
+
+array3.splice(Math.floor(array3.length/2),2,3,4);
+console.log(array3);
+
+
+console.log(array3.pop());
+console.log(array3.pop());
+
+
+array3.push(3,7);
+array3.unshift(5,3);
+
+
+summ = array3.reduce(function(x,y){
+	return(x+y);
+});
+console.log(summ);
+
+console.log(array3.join("^"));*/
+
+
+
+
+/*var array = [];
+var n = 100;
+for (var i = 0; i < n; i++) {
+  array.push(true);
+}
+console.log(array);
+for (var p = 2; p < array.length/2; p++) {
+  if (array[p] == false) continue;
+  var a = 1;
+  for (var i = 2; i < array.length; i = a*p) {
+    array[i] = false;
+    a++;
+  }
+}
+console.log(array);
+
+var array2 = [2]; 
+for (var i = 2; i < array.length; i++) {
+  if (array[i]===true) {
+    array2.push(i);
+  }
+}
+
+var summ = array2.reduce(function(x,y){
+  return x+y;
+});
+console.log(array2);
+console.log(summ);*/
+
+
+//HOMEWORK
+/*var array = [];
+for (i = 1;i < 100; i++) {
+	if (i%3==0){
+			array.push(i);
+	}
+}
+console.log(array);
+
+
+var array2 = [];
+for (i = 0; i < array.length; i++) {
+	if(array[i]%5!==0) {
+		array2.push(array[i]);
+	}
+}
+console.log(array2);
+
+
+/*array2.reverse();
+array2.sort(function(a,b){
+	return a-b;
+});
+console.log(array2);*/
+
+
+/*var array2 = array.map(function(element){
+	var index = array.indexOf(element);
+	if(element%5!==0) {
+		return element;
+	} else {
+		array.splice(index,1);
+	}
+});
+console.log(array2);*/
+</script>
+
+
+
+
+
+
+
+
+  <article class="container">
+    <input id='itemValue' type="text"/>
+    <button type="button" class="btn btn-primary" onclick="onAddClick()">
+      Добавить
+    </button>
+    <section id='list'>
+    </section>
+  </article>
+  <script>
+
+    var list = [{
+      id: 1,
+      value: 'печеньки'
+    }, {
+      id: 2,
+      value:'чаек'
+    }];
+
+    function addItem(id, name) {
+
+      // ======= Вставьте свой код сюда =========
+      
+      list.push({id,value:name});
+
+      // вам необходимо добавить соответствующую покупку
+      // id и name приходят как аргументы
+      
+      console.log('add', id, name, list);
+
+      // ========================================
+      updateList();
+    }
+
+    function removeItem(id) {
+ 			
+      // ======= Вставьте свой код сюда =========
+
+      list.splice(id,1);
+
+      // вам необходимо удалить соответствующую покупку
+      // id покупки (не путать id с индексом) приходит как агрумент
+      
+      console.log('remove', id, list);
+
+      // ========================================
+      updateList();
+    }
+
+
+
+    // ****************************************
+
+    var getNextId = function () {
+      var counter = 3;
+      return function() { return counter++; }
+    }();
+
+    function updateList() {
+      var element = document.getElementById('list');
+      var removeButton = 
+      element.innerHTML = '<ul class="list-group">' +
+        list.map(function(e) {
+          return '<li class="list-group-item d-flex justify-content-between">'
+            + '<span>' + e.value + '</span>'
+            + '<button type="button" class="btn btn-danger" onclick="removeItem(' + e.id + ')">Удалить</button>'
+            + '</li>';
+        }).join('');
+    }
+
+    function onAddClick() {
+      var element = document.getElementById('itemValue');
+      var value = element.value;
+      if (value) {
+        addItem(getNextId(), value);
+      }
+    }
+
+    updateList();
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
+

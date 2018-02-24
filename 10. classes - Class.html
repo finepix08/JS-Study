@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+    var ShapeF = function(color) {
+        this.color = color;
+        this.shapechangeColor = function () {
+            this.color = red;
+            console.log('Я меняю цвет');
+        };
+        this.draw = function () {
+            console.log('Я рисую');
+        }
+    }
+
+
+    function ShapeP() {
+        this.color = color;
+    }
+    ShapeP.prototype.changeColor = function(color) {
+        this.color = color;
+        console.log('Я меняю цвет на : ' + this.color);
+    }
+
+    ShapeP.prototype.draw = function() {
+        console.log('Я рисую');
+    }
+
+
+    function Square(size, color) {
+        ShapeP.apply(this, arguments)
+        this.size = size;
+    }
+
+    Square.prototype = Object.create(ShapeP.prototype);
+    Square.prototype.constructor = Square;
+
+    Square.prototype.resize = function(delta) {
+        this.size += delta;
+        console.log('new size: ' + this.size);
+    }
+
+    Square.prototype.draw = function() {
+        Square.prototype.draw.apply(this); 
+        console.log('I\'m square' + this.size);
+    }
+
+
+    function Circle(radius, color) {
+        ShapeP.apply(this, arguments)
+        this.radius = radius;
+    }
+
+    Circle.prototype = Object.create(ShapeP.prototype);
+    Circle.prototype.constructor = Circle;
+
+    Circle.prototype.rotate = function() {
+        console.log('????');
+    }
+
+    Circle.prototype.draw = function() {
+        console.log('I\'m circle' + this.radius);
+    }
+
+    var square = new Square(5, 'red');
+    square.resize(5);
+    square.draw();
+    square.changeColor('black');
+
+    var circle = new Circle(50, 'red');
+    circle.rotate(45);
+    circle.draw();
+    circle.changeColor('black');
+
+
+    class ShapeES {
+        constructor(color) {
+            this.color = color;
+        }
+        changeColor(color) {
+            this.color = color;
+            console.log('Я меняю цвет на : ' + this.color);
+        }
+        draw() {
+            console.log('Я рисую');
+        }
+    }
+
+    class SquareES extends ShapeES {
+        constructor(size, color) {
+            super(color);
+            this.size = size;
+        }
+        resize(delta){
+            this.size += delta;
+            console.log('new size: ' + this.size);
+        }
+        draw() {
+            super.draw();
+            console.log('I\'m square' + this.size);
+        }
+    }
+
+    class CircleES extends ShapeES {
+        constructor(radius, color) {
+            super(color);
+            this.radius = radius;
+        }
+        rotate(delta){
+            console.log('????');
+        }
+        draw() {
+            console.log('I\'m circle' + this.radius);
+        }
+    }
+
+    var square = new SquareES(5, 'red');
+    square.resize(5);
+    square.draw();
+    square.changeColor('black');
+
+
+    console.log(square);
+
+    var circle = new CircleES(50, 'red');
+    circle.rotate(45);
+    circle.draw();
+    circle.changeColor('orange');
+
+    console.log(circle);
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

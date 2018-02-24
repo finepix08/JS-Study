@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="board">
+        <div class="square t l"></div>
+        <div class="square t c"></div>
+        <div class="square t r"></div>
+        <div class="square c l"></div>
+        <div class="square c c"></div>
+        <div class="square c r"></div>
+        <div class="square b l"></div>
+        <div class="square b c"></div>
+        <div class="square b r"></div>
+    </div>
+
+    <script>
+    let square = document.getElementsByClassName('square');
+    let field = [[false, false, false], [false, false, false], [false, false, false]];
+    for (let a = 0; a < square.length; a++) {
+        square[a].addEventListener('click', add);
+        function add() {
+            let round = document.createElement("div");
+            round.className = "round";
+            square[a].appendChild(round);
+            let n = 0;
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (n == a) {
+                            field[i][j] = 'o';
+                        }
+                    n++;
+                    }
+                }
+            function comp() {  
+            let cross = document.createElement("div");
+            let n = 0;
+                top:
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (field[i][j] === false) {
+                            field[i][j] = 'x';
+                            let cross = document.createElement("div");
+                            cross.className = "cross";
+                            square[n].appendChild(cross);
+                            break top;
+                        }
+                    n++;
+                    }
+                }  
+            console.log(field);
+            }
+            setTimeout(comp, 50);
+
+        //проверка X
+            //проверка на строку
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    function check(elem) {
+                        return elem === 'x'
+                    }
+                    if (field[i].every(check)) {
+                        alert('Компьютер победил');
+                        break
+                    }                    
+                }
+            }
+            //проверка на столбец
+            for (let j = 0; j < 3; j++) {
+                for (let i = 0; i <= 3; i++) {
+                    if (i == 3) {
+                        alert('Компьютер победил');
+                        break
+                    }
+                    if (field[i][j] !== 'x') break;
+                }
+            }
+            //проверка на диагональ - 1
+            for (let i = 0; i <= 3; i++) {
+                if (i == 3) {
+                    alert('Компьютер победил');
+                    break;
+                }
+                if (field[i][i] !== 'x') break;
+            }
+            //проверка на диагональ - 2
+            for (let i = 0; i <= 3; i++) {
+                if (i == 3) {
+                    alert('Компьютер победил');
+                    break;
+                }
+                if (field[i][3-i-1] !== 'x') break;
+            }
+        
+
+     //проверка O
+        //проверка на строку
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    function check(elem) {
+                        return elem === 'o'
+                    }
+                    if (field[i].every(check)) {
+                        alert('Вы победили');
+                        break
+                    }                    
+                }
+            }
+            //проверка на столбец
+            for (let j = 0; j < 3; j++) {
+                for (let i = 0; i <= 3; i++) {
+                    if (i == 3) {
+                        alert('Вы победили');
+                        break
+                    }
+                    if (field[i][j] !== 'o') break;
+                }
+            }
+            //проверка на диагональ - 1
+            for (let i = 0; i <= 3; i++) {
+                if (i == 3) {
+                    alert('Вы победили');
+                    break;
+                }
+                if (field[i][i] !== 'o') break;
+            }
+            //проверка на диагональ - 2
+            for (let i = 0; i <= 3; i++) {
+                if (i == 3) {
+                    alert('Вы победили');
+                    break;
+                }
+                if (field[i][3-i-1] !== 'o') break;
+            }
+        }
+    }
+    </script>
+</body>
+</html>
