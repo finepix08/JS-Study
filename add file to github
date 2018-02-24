@@ -1,0 +1,2 @@
+git remote add origin https://github.com/finepix08/JS-Study.git
+git push -u origin master
