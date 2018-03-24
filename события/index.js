@@ -43,7 +43,7 @@ button.addEventListener('click', function (){
      dy.appendChild(p2);
 });*/
 
-
+    
     var buttonAdd = document.getElementsByClassName('button')[0];
     var sectionOut = document.getElementById('posts');
     var section = sectionOut.children[0];
