@@ -5,9 +5,9 @@ class TodoList extends Component {
     
     render() {
         
-        let listCopy = this.props.list
-            .filter(t => t.text.includes(this.props.valueFilter))
-            .map(t => (<Todo list={this.props.list} list1={t} text={t.text} number={t.number} key={t.id} Remove={this.props.Remove}/>))
+        let listCopy = this.props.store.getState().list
+            .filter(t => t.text.includes(this.props.store.getState().filter))
+            .map(t => (<Todo list1={t} text={t.text} number={t.number} key={t.id}/>))
        
         
         return (
